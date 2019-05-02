@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-namespace Saj.Auth.Api.Controllers
+namespace Cas.Auth.Api.Controllers
 {
     [Route("api")]
     [ApiController]
@@ -36,13 +32,6 @@ namespace Saj.Auth.Api.Controllers
             
             var props = new AuthenticationProperties { RedirectUri = returnUrl };
             await HttpContext.ChallengeAsync("CAS", props);
-        }
-        
-        [AllowAnonymous]
-        [HttpGet("signin")]
-        public string Signin()
-        {
-            return "";
         }
         
         [Authorize]
